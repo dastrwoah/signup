@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up – Water for All</title>
+    <style>
+        /* ========== COMPLETE STYLES FOR SIGNUP PAGE ========== */
+        /* Matches your site's violet/purple theme */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #f5e6ff;
+            font-family: 'Segoe UI', 'Verdana', 'Arial', sans-serif;
+            font-size: 1.08em;
+            line-height: 1.7;
+            color: #222;
+            margin: 0;
+        }
+
+        /* Navbar */
+        .navbar {
+            width: 100%;
+            background: violet;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            padding: 0.5em 1em;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100;
+        }
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-right: 24px;
+        }
+        .logo-img {
+            width: 75px;
+            height: auto;
+        }
+        .search-bar {
+            padding: 6px 10px;
+            font-size: 1em;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+        }
+        .navbar ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 16px;
+        }
+        .navbar li {
+            float: left;
+            transition: transform 0.25s ease;
+        }
+        .navbar li:hover {
+            transform: rotate(-6deg) scale(1.02);
+        }
+        .navbar a {
+            color: white;
+            text-decoration: none;
+            padding: 15px;
+            display: block;
+            text-align: center;
+        }
+        .navbar a:hover {
+            background-color: blueviolet;
+        }
+
+        /* Main content */
+        main {
+            margin-left: 20px;
+            margin-right: 20px;
+            margin-top: 80px;
+        }
+        .main-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 24px;
+            padding: 20px 30px;
+            box-shadow: 0 8px 20px rgba(75, 0, 130, 0.15);
+        }
+        h1 {
+            text-align: center;
+            font-size: 2.2em;
+            color: #4B0082;
+            margin-bottom: 10px;
+        }
+
+        /* Form styles */
+        form {
+            margin-top: 20px;
+        }
+        fieldset {
+            border: 2px solid #d1b3ff;
+            border-radius: 20px;
+            padding: 20px 25px;
+            margin-bottom: 30px;
+            background: #fefaff;
+        }
+        legend {
+            font-weight: bold;
+            color: #4B0082;
+            background: #f5e6ff;
+            padding: 5px 18px;
+            border-radius: 40px;
+            border: 1px solid #c9a9ff;
+            font-size: 1.1em;
+        }
+        label {
+            font-weight: 600;
+            color: #3c0066;
+            display: inline-block;
+            margin-top: 12px;
+            margin-bottom: 4px;
+        }
+        input:not([type="radio"]):not([type="checkbox"]),
+        select,
+        textarea {
+            width: 100%;
+            padding: 10px 12px;
+            margin-top: 4px;
+            margin-bottom: 6px;
+            border: 1px solid #c9a9ff;
+            border-radius: 12px;
+            font-family: inherit;
+            font-size: 0.95em;
+            background: white;
+        }
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: #8a2be2;
+            box-shadow: 0 0 0 3px rgba(138, 43, 226, 0.2);
+        }
+        input[type="radio"], input[type="checkbox"] {
+            width: auto;
+            margin-right: 6px;
+            margin-left: 12px;
+        }
+        .error-span {
+            color: #d32f2f;
+            font-size: 0.85em;
+            display: block;
+            margin-top: -4px;
+            margin-bottom: 8px;
+            background: #ffe6e6;
+            padding: 4px 10px;
+            border-radius: 20px;
+            width: fit-content;
+        }
+        .submit-btn {
+            background: linear-gradient(135deg, #8a2be2, #4B0082);
+            color: white;
+            border: none;
+            padding: 14px 24px;
+            font-size: 1.2em;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.2s;
+        }
+        .submit-btn:hover {
+            transform: scale(1.02);
+            box-shadow: 0 8px 18px rgba(138, 43, 226, 0.4);
+        }
+        .home-link {
+            display: inline-block;
+            background: #f0e6ff;
+            padding: 8px 20px;
+            border-radius: 40px;
+            text-decoration: none;
+            color: #4B0082;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        .home-link:hover {
+            background: #e1cfff;
+        }
+        #successMessage {
+            text-align: center;
+            background: #e0ffe0;
+            padding: 12px;
+            border-radius: 30px;
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        .site-footer {
+            background: #4B0082;
+            color: #fff;
+            padding: 1.1em 1em;
+            text-align: center;
+            margin-top: 40px;
+        }
+        .footer-container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .footer-left {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 8px;
+        }
+        .footer-links a:hover {
+            text-decoration: underline;
+        }
+        .sprite, .sprite2 {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background-color: #a55eff;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="logo">
+                <img src="../media/logo2.png" alt="Logo" class="logo-img" onerror="this.style.display='none'">
+            </div> 
+            <input type="text" placeholder="Search.." class="search-bar">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="problem.html">Problems</a></li>
+                <li><a href="solution.html">Solutions</a></li>
+                <li><a href="about.html">About Me</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <div class="main-container">
+            <h1>💧 Join the Movement for Clean Water</h1>
+            <p style="text-align: center; margin-bottom: 20px;">Sign up to receive updates, volunteer opportunities, and advocacy tips.</p>
+
+            <form id="signupForm" onsubmit="return validateForm()">
+                <!-- PERSONAL INFO -->
+                <fieldset>
+                    <legend>Personal Information</legend>
+                    <label>Full Name:</label>
+                    <input type="text" id="fullname" name="fullname">
+                    <span class="error-span" id="fullnameError"></span>
+
+                    <label>Birthdate:</label>
+                    <input type="date" id="birthdate" name="birthdate">
+                    <span class="error-span" id="birthdateError"></span>
+
+                    <label>Sex:</label><br>
+                    <input type="radio" name="sex" value="male"> Male
+                    <input type="radio" name="sex" value="female"> Female
+                    <input type="radio" name="sex" value="other"> Other
+                    <span class="error-span" id="sexError"></span>
+                </fieldset>
+
+                <!-- ACCOUNT DETAILS -->
+                <fieldset>
+                    <legend>Account Details</legend>
+                    <label>Email:</label>
+                    <input type="email" id="email" name="email">
+                    <span class="error-span" id="emailError"></span>
+
+                    <label>Username (8–20 chars, letters/digits only):</label>
+                    <input type="text" id="username" name="username">
+                    <span class="error-span" id="usernameError"></span>
+
+                    <label>Password (≥10 chars, 1 upper, 1 lower, 1 digit):</label>
+                    <input type="password" id="password" name="password">
+                    <span class="error-span" id="passwordError"></span>
+
+                    <label>Confirm Password:</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword">
+                    <span class="error-span" id="confirmError"></span>
+                </fieldset>
+
+                <!-- TOPIC QUESTIONS -->
+                <fieldset>
+                    <legend>Water & Hygiene Awareness</legend>
+                    <label>What is the most urgent water issue in the Philippines?</label>
+                    <select id="waterIssue">
+                        <option value="">-- choose --</option>
+                        <option value="river_pollution">River pollution</option>
+                        <option value="unsafe_drinking">Unsafe drinking water</option>
+                        <option value="poor_sanitation">Poor sanitation</option>
+                        <option value="unequal_access">Unequal access</option>
+                    </select>
+                    <span class="error-span" id="waterIssueError"></span>
+
+                    <label>Which solutions interest you? (check at least one):</label><br>
+                    <input type="checkbox" name="solutions" value="cleanup"> Cleanup drives<br>
+                    <input type="checkbox" name="solutions" value="awareness"> Awareness campaigns<br>
+                    <input type="checkbox" name="solutions" value="waste"> Waste management<br>
+                    <input type="checkbox" name="solutions" value="filtration"> Water filtration<br>
+                    <span class="error-span" id="solutionsError"></span>
+
+                    <label>What is one small action you can commit to for clean water?</label>
+                    <textarea id="commitment" rows="3" placeholder="e.g., reduce plastic, save water, join a cleanup..."></textarea>
+                    <span class="error-span" id="commitmentError"></span>
+                </fieldset>
+
+                <button type="submit" class="submit-btn">💧 Join us and help bring clean water to every Filipino! 💧</button>
+                <div id="successMessage"></div>
+                <div style="text-align: center; margin-top: 20px;">
+                    <a href="https://dastrwoah.github.io/csproject/htdocs/" class="home-link">← Back to Homepage</a>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <div class="footer-left">
+                <span class="sprite"></span>
+                <span class="sprite2"></span>
+                <span>© 2025 Water for All — All rights reserved.</span>
+            </div>
+            <div class="footer-links">
+                <a href="https://dastrwoah.github.io/csproject/htdocs/">Home</a>
+                <a href="https://dastrwoah.github.io/csproject/htdocs/problem.html">Problems</a>
+                <a href="https://dastrwoah.github.io/csproject/htdocs/solution.html">Solutions</a>
+                <a href="https://dastrwoah.github.io/csproject/htdocs/about.html">About</a>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
